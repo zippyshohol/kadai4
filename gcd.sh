@@ -8,5 +8,13 @@ gcd () {
   fi
 }
 
+# 引数の個数チェック
+if [ $# -ne 2 ]; then
+  echo "input 2 arguments" 1>&2
+  exit 1
+fi
+
+# 最大公約数を計算
 gcd $1 $2
+exit 0
 
