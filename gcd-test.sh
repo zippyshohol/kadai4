@@ -50,6 +50,14 @@ diff $tmp-test7-ans $tmp-err-nat || ERROR_EXIT "error in test 7-2"
 ./gcd.sh 2 -1 2> $tmp-test8-ans && ERROR_EXIT "error in test8-1"
 diff $tmp-test8-ans $tmp-err-nat || ERROR_EXIT "error in test 8-2"
 
+# test9: 引数 1 が浮動小数点数
+./gcd.sh 1.1 2 2> $tmp-test9-ans && ERROR_EXIT "error in test9-1"
+diff $tmp-test9-ans $tmp-err-nat || ERROR_EXIT "error in test 9-2"
+
+# test10: 引数 1 が浮動小数点数
+./gcd.sh 2 1.1 2> $tmp-test10-ans && ERROR_EXIT "error in test10-1"
+diff $tmp-test10-ans $tmp-err-nat || ERROR_EXIT "error in test10-2"
+
 # 一時ファイルの削除
 rm -f $tmp-*
 # 正常終了
