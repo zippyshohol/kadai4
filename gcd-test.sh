@@ -4,8 +4,8 @@
 tmp=/tmp/$$
 
 # エラーメッセージ
-echo "input 2 arguments" > $tmp-err-args
-echo "input natural number" > $tmp-err-nat
+echo "input 2 arguments" > $tmp-args
+echo "input natural number" > $tmp-nat
 
 # テスト失敗時の処理
 ERROR_EXIT () {
@@ -19,54 +19,54 @@ ERROR_EXIT () {
 
 # テスト開始
 # test1: 引数の数が足りない
-./gcd.sh 2> $tmp-test1-ans && ERROR_EXIT "error in test1-1"
-diff $tmp-test1-ans $tmp-err-args || ERROR_EXIT "error in test1-2"
+./gcd.sh 2> $tmp-ans && ERROR_EXIT "error in test 1-1"
+diff $tmp-ans $tmp-args || ERROR_EXIT "error in test 1-2"
 
 # test2: 引数の数が多い
-./gcd.sh 1 2 3 2> $tmp-test2-ans && ERROR_EXIT "error in test2-1"
-diff $tmp-test2-ans $tmp-err-args || ERROR_EXIT "error in test2-2"
+./gcd.sh 1 2 3 2> $tmp-ans && ERROR_EXIT "error in test 2-1"
+diff $tmp-ans $tmp-args || ERROR_EXIT "error in test 2-2"
 
 # test3: 引数 1 が数値でない
-./gcd.sh hoge 2 2> $tmp-test3-ans && ERROR_EXIT "error in test3-1"
-diff $tmp-test3-ans $tmp-err-nat || ERROR_EXIT "error in test3-2"
+./gcd.sh hoge 2 2> $tmp-ans && ERROR_EXIT "error in test 3-1"
+diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test 3-2"
 
 # test4: 引数 2 が数値でない
-./gcd.sh 2 hoge 2> $tmp-test4-ans && ERROR_EXIT "error in test4-1"
-diff $tmp-test4-ans $tmp-err-nat || ERROR_EXIT "error in test 4-2"
+./gcd.sh 2 hoge 2> $tmp-ans && ERROR_EXIT "error in test 4-1"
+diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test 4-2"
 
 # test5: 引数 1 が 0
-./gcd.sh 0 2 2> $tmp-test5-ans && ERROR_EXIT "error in test5-1"
-diff $tmp-test5-ans $tmp-err-nat || ERROR_EXIT "error in test 5-2"
+./gcd.sh 0 2 2> $tmp-ans && ERROR_EXIT "error in test 5-1"
+diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test 5-2"
 
 # test6: 引数 2 が 0
-./gcd.sh 2 0 2> $tmp-test6-ans && ERROR_EXIT "error in test6-1"
-diff $tmp-test6-ans $tmp-err-nat || ERROR_EXIT "error in test 6-2"
+./gcd.sh 2 0 2> $tmp-ans && ERROR_EXIT "error in test 6-1"
+diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test 6-2"
 
 # test7: 引数 1 が負
-./gcd.sh -1 2 2> $tmp-test7-ans && ERROR_EXIT "error in test7-1"
-diff $tmp-test7-ans $tmp-err-nat || ERROR_EXIT "error in test 7-2"
+./gcd.sh -1 2 2> $tmp-ans && ERROR_EXIT "error in test 7-1"
+diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test 7-2"
 
 # test8: 引数 2 が負
-./gcd.sh 2 -1 2> $tmp-test8-ans && ERROR_EXIT "error in test8-1"
-diff $tmp-test8-ans $tmp-err-nat || ERROR_EXIT "error in test 8-2"
+./gcd.sh 2 -1 2> $tmp-ans && ERROR_EXIT "error in test 8-1"
+diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test 8-2"
 
 # test9: 引数 1 が浮動小数点数
-./gcd.sh 1.1 2 2> $tmp-test9-ans && ERROR_EXIT "error in test9-1"
-diff $tmp-test9-ans $tmp-err-nat || ERROR_EXIT "error in test 9-2"
+./gcd.sh 1.1 2 2> $tmp-ans && ERROR_EXIT "error in test 9-1"
+diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test 9-2"
 
 # test10: 引数 1 が浮動小数点数
-./gcd.sh 2 1.1 2> $tmp-test10-ans && ERROR_EXIT "error in test10-1"
-diff $tmp-test10-ans $tmp-err-nat || ERROR_EXIT "error in test10-2"
+./gcd.sh 2 1.1 2> $tmp-ans && ERROR_EXIT "error in test 10-1"
+diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test 10-2"
 
 # test11: 引数 1 が扱える範囲外の整数
-./gcd.sh 9223372036854775808 2 2> $tmp-test11-ans && ERROR_EXIT "error in test11-1"
-diff $tmp-test11-ans $tmp-err-nat || ERROR_EXIT "error in test11-2"
+./gcd.sh 9223372036854775808 2 2> $tmp-ans && ERROR_EXIT "error in test 11-1"
+diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test 11-2"
 
 # test12: 引数 2 が扱える範囲外の整数
-./gcd.sh 2 9223372036854775808 2> $tmp-test12-ans && ERROR_EXIT "error in test12-1"
-diff $tmp-test12-ans $tmp-err-nat || ERROR_EXIT "error in test12-2"
+./gcd.sh 2 9223372036854775808 2> $tmp-ans && ERROR_EXIT "error in test 12-1"
+diff $tmp-ans $tmp-nat || ERROR_EXIT "error in test 12-2"
 
-# test13: 正常系テスト1: gcd が引数 1 と一致
+# test13: gcd が引数 1 と一致
 echo 3 > $tmp-exp
 ./gcd.sh 3 6 > $tmp-ans || ERROR_EXIT "error in test 13-1"
 diff $tmp-exp $tmp-ans || ERROR_EXIT "error in test 13-2"
