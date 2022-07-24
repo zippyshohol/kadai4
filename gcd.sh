@@ -13,7 +13,7 @@ GCD () {
 IS_NATURAL_NUMBER () {
   expr $1 + 0 > /dev/null 2>&1
   if [ $? -ge 2 ] || [ $1 -le 0 ]; then
-    echo "input natural number"
+    echo "input natural number" 1>&2
     exit 1
   fi
 }
