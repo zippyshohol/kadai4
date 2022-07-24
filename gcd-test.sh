@@ -73,17 +73,17 @@ diff $tmp-exp $tmp-ans || ERROR_EXIT "error in test 13-2"
 
 # test14: gcd が引数 2 と一致
 echo 3 > $tmp-exp
-./gcd.sh 6 3 > $tmp-ans || ERROR_EXIT "error in test 14-1"$
+./gcd.sh 6 3 > $tmp-ans || ERROR_EXIT "error in test 14-1"
 diff $tmp-exp $tmp-ans || ERROR_EXIT "error in test 14-2"
 
 # test15: gcd が引数 1 と引数 2 のどちらとも一致しない
 echo 6 > $tmp-exp
-./gcd.sh 12 18 > $tmp-ans || ERROR_EXIT "error in test 15-1"$
+./gcd.sh 12 18 > $tmp-ans || ERROR_EXIT "error in test 15-1"
 diff $tmp-exp $tmp-ans || ERROR_EXIT "error in test 15-2"
 
 # test16: gcd が 1
 echo 1 > $tmp-exp
-./gcd.sh 5 7 > $tmp-ans || ERROR_EXIT "error in test 16-1"$
+./gcd.sh 5 7 > $tmp-ans || ERROR_EXIT "error in test 16-1"
 diff $tmp-exp $tmp-ans || ERROR_EXIT "error in test 16-2"
 
 # 一時ファイルの削除
