@@ -22,6 +22,10 @@ ERROR_EXIT () {
 ./gcd.sh 2> $tmp-test1-ans && ERROR_EXIT "error in test1-1"
 diff $tmp-test1-ans $tmp-err-args || ERROR "error in test1-2"
 
+# test2: 引数の数が多い
+./gcd.sh 1 2 3 2> $tmp-test2-ans && ERROR_EXIT "error in test2-1"
+diff $tmp-test2-ans $tmp-err-args || ERROR "error in test2-2"
+
 # 一時ファイルの削除
 rm -f $tmp-*
 # 正常終了
