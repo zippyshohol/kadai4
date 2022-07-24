@@ -66,6 +66,26 @@ diff $tmp-test11-ans $tmp-err-nat || ERROR_EXIT "error in test11-2"
 ./gcd.sh 2 9223372036854775808 2> $tmp-test12-ans && ERROR_EXIT "error in test12-1"
 diff $tmp-test12-ans $tmp-err-nat || ERROR_EXIT "error in test12-2"
 
+# test13: 正常系テスト1: gcd が引数 1 と一致
+echo 3 > $tmp-exp
+./gcd.sh 3 6 > $tmp-ans || ERROR_EXIT "error in test 13-1"
+diff $tmp-exp $tmp-ans || ERROR_EXIT "error in test 13-2"
+
+# test14: gcd が引数 2 と一致
+echo 3 > $tmp-exp
+./gcd.sh 6 3 > $tmp-ans || ERROR_EXIT "error in test 14-1"$
+diff $tmp-exp $tmp-ans || ERROR_EXIT "error in test 14-2"
+
+# test15: gcd が引数 1 と引数 2 のどちらとも一致しない
+echo 6 > $tmp-exp
+./gcd.sh 12 18 > $tmp-ans || ERROR_EXIT "error in test 15-1"$
+diff $tmp-exp $tmp-ans || ERROR_EXIT "error in test 15-2"
+
+# test16: gcd が 1
+echo 1 > $tmp-exp
+./gcd.sh 5 7 > $tmp-ans || ERROR_EXIT "error in test 16-1"$
+diff $tmp-exp $tmp-ans || ERROR_EXIT "error in test 16-2"
+
 # 一時ファイルの削除
 rm -f $tmp-*
 # 正常終了
