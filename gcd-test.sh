@@ -58,6 +58,14 @@ diff $tmp-test9-ans $tmp-err-nat || ERROR_EXIT "error in test 9-2"
 ./gcd.sh 2 1.1 2> $tmp-test10-ans && ERROR_EXIT "error in test10-1"
 diff $tmp-test10-ans $tmp-err-nat || ERROR_EXIT "error in test10-2"
 
+# test11: 引数 1 が扱える範囲外の整数
+./gcd.sh 9223372036854775808 2 2> $tmp-test11-ans && ERROR_EXIT "error in test11-1"
+diff $tmp-test11-ans $tmp-err-nat || ERROR_EXIT "error in test11-2"
+
+# test12: 引数 2 が扱える範囲外の整数
+./gcd.sh 2 9223372036854775808 2> $tmp-test12-ans && ERROR_EXIT "error in test12-1"
+diff $tmp-test12-ans $tmp-err-nat || ERROR_EXIT "error in test12-2"
+
 # 一時ファイルの削除
 rm -f $tmp-*
 # 正常終了
